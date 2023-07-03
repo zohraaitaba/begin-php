@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #01551f; /* Couleur de fond vert */
+    color: #652f04; /* Couleur du texte marron */
+    font-family: 'Permanent Marker', cursive; /* Police de caractères */
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    justify-content: end;
+    align-content: end;
+}
