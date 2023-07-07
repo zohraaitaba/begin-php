@@ -36,60 +36,60 @@ if (!empty($_POST)) {
             $finalSkills[] = $validSkills[$skill]; // $validSkills['html']
         }
 
-        $success = "Bonjour $email, voici vos skills : ".implode(', ', $finalSkills);
+        $success = "Bonjour $email, voici vos skills : " . implode(', ', $finalSkills);
     }
 }
 
 ?>
 
-    <div class="container py-5">
-        <h1>Contact</h1>
+<div class="container py-5">
+    <h1>Contact</h1>
 
-        <?php if (isset($success)) { ?>
+    <?php if (isset($success)) { ?>
         <div class="alert alert-success">
             <?= $success; ?>
         </div>
-        <?php } ?>
+    <?php } ?>
 
-        <?php if (!empty($errors)) { ?>
-            <div class="alert alert-danger">
+    <?php if (!empty($errors)) { ?>
+        <div class="alert alert-danger">
             <?php foreach ($errors as $error) { ?>
                 <p class="m-0"><?= $error; ?></p>
             <?php } ?>
-            </div>
-        <?php } ?>
+        </div>
+    <?php } ?>
 
-        <form method="post">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" name="email" value="<?= $email; ?>">
-            </div>
+    <form method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" name="email" value="<?= $email; ?>">
+        </div>
 
-            <div class="mb-3">
-                <label class="form-label">Compétences</label>
-                <div class="form-check">
-                    <input type="checkbox" id="html" name="skills[]" value="html" <?= checked('html', $skills); ?> class="form-check-input">
-                    <label for="html" class="form-check-label">HTML / CSS</label>
-                </div>
-
-                <div class="form-check">
-                    <input type="checkbox" id="js" name="skills[]" value="js" <?= checked('js', $skills); ?> class="form-check-input">
-                    <label for="js" class="form-check-label">JavaScript</label>
-                </div>
-
-                <div class="form-check">
-                    <input type="checkbox" id="java" name="skills[]" value="java" <?= checked('java', $skills); ?> class="form-check-input">
-                    <label for="java" class="form-check-label">Java</label>
-                </div>
-
-                <div class="form-check">
-                    <input type="checkbox" id="php" name="skills[]" value="php" <?= checked('php', $skills); ?> class="form-check-input">
-                    <label for="php" class="form-check-label">PHP</label>
-                </div>
+        <div class="mb-3">
+            <label class="form-label">Compétences</label>
+            <div class="form-check">
+                <input type="checkbox" id="html" name="skills[]" value="html" <?= checked('html', $skills); ?> class="form-check-input">
+                <label for="html" class="form-check-label">HTML / CSS</label>
             </div>
 
-            <button class="btn btn-dark">Valider</button>
-        </form>
-    </div>
+            <div class="form-check">
+                <input type="checkbox" id="js" name="skills[]" value="js" <?= checked('js', $skills); ?> class="form-check-input">
+                <label for="js" class="form-check-label">JavaScript</label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" id="java" name="skills[]" value="java" <?= checked('java', $skills); ?> class="form-check-input">
+                <label for="java" class="form-check-label">Java</label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" id="php" name="skills[]" value="php" <?= checked('php', $skills); ?> class="form-check-input">
+                <label for="php" class="form-check-label">PHP</label>
+            </div>
+        </div>
+
+        <button class="btn btn-dark">Valider</button>
+    </form>
+</div>
 
 <?php require 'partials/footer.php'; ?>
