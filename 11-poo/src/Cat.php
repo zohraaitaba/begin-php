@@ -8,6 +8,7 @@ class Cat
     private string $type = 'Chat de gouttière';
     private string $fur;
 
+    //constructeur
     public function __construct(string $name, string $type = 'Chat de gouttière')
     {
         $this->name = $name;
