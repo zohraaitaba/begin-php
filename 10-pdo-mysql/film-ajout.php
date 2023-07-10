@@ -10,19 +10,46 @@
     </nav>
 
 
-    <div>
-    <div class="mb-3 form-floating">
-            <textarea class="form-control <?= isset($errors['message']) ? 'is-invalid' : ''; ?>" placeholder="Message" id="message" name="message" style="height: 100px"><?= $message; ?></textarea>
-            <label for="message">Description</label>
-            <?php if (isset($errors['message'])) { ?>
-            <div class="invalid-feedback">
-                <?= $errors['message']; ?>
+    <form method="post">
+        <div class="mb-3 form-floating">
+            <h2>Ajouter un film</h2>
+            <div class="mb-3">
+                <label for="title" class="form-label">Titre</label>
+                <input type="text" class="form-control" id="title">
             </div>
-            <?php } ?>
-        </div>
-    </div>
+            <div class="mb-3">
+                <label for="released_at" class="form-label">Date de sortie</label>
+                <input type="date" class="form-control" id="released_at">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="duration" class="form-label">Durée</label>
+                <input type="time" class="form-control" id="duration">
+            </div>
+            <div class="mb-3">
+                <label for="cover" class="form-label">Cover</label>
+                <input type="text" class="form-control" id="cover">
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">catégorie</label>
+                <select class="form-select" aria-label="category">
+                    <option selected>Choisir une catégorie</option>
+                    <option value="1">Films de gangsters</option>
+                    <option value="2">Action</option>
+                    <option value="3">Horreur</option>
+                    <option value="4">Sciences-fiction</option>
+                    <option value="5">Thriller</option>
+                </select>
+            </div>
 
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Ajouter</button>
+            </div>
+    </form>
 </div>
 
 
-<?php require 'partials/header.php'; ?>
+<?php require 'partials/footer.php'; ?>
