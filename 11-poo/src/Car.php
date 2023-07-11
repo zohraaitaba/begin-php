@@ -4,72 +4,76 @@ namespace App;
 
 class Car
 {
-    private int $roues = 4;
-    private string $couleur;
-    private string $marque;
-    private string $modele;
-    private int $essence;
+    private string $brand;
+    private string $model;
+    private string $color;
+    private int $wheel = 4;
+    private int $fuel = 50;
 
-
-    //constructeur
     public function __construct(
-        int $roues, 
-        string $couleur,
-         string $marque, 
-         string $modele, 
-         int $essence
-    ){
-        $this->roues = $roues;
-        $this->couleur = $couleur;
-        $this->marque = $marque;
-        $this->modele = $modele;
-        $this->essence = $essence;
+        string $brand,
+        string $model,
+        string $color = 'Blanc',
+        int $wheel = 4
+    ) {
+        $this->brand = $brand;
+        $this->model = $model;
+        $this->color = $color;
+        $this->wheel = $wheel;
     }
 
-
-    /**
-     * Get the value of couleur
-     */
-    public function getCouleur()
+    public function name(): string
     {
-        return $this->couleur;
+        return $this->brand.' '.$this->model;
     }
 
-    /**
-     * Set the value of couleur
-     *
-     * @return  self
-     */
-    public function setCouleur($couleur)
+    public function getColor(): string
     {
-        $this->couleur = $couleur;
+        return strtolower($this->color);
+    }
+
+    public function repaint(string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }
 
-    //fonction rouler
-    public function rouler($essence): string
+    public function hasFuel(): bool
     {
-        if ($essence >= 2){
-            $this->essence -= 2;
-            echo $this->modele . ' roule! ';
-        }else{
-            echo 'ne peut pas rouler'
+        return $this->fuel > 0;
+    }
+
+    public function drive(): string
+    {
+        $this->fuel -= 2;
+        
+        if (!$this->hasFuel()) {
+            $this->fuel = 0;
+            return $this->name().' fait pied pied';
         }
+
+        return $this->name().' fait vroom vroom';
     }
 
-    //fonction klaxonner
-    public function klaxonner(): string
+    public function klaxon(): string
     {
-        return $this->modele . ' klaxonne! ';
+        return $this->name().' fait pouet pouet';
     }
 
-
-    /**
-     * Get the value of modele
-     */
-    public function getModele()
+    public function fill(int $fuel = null): self
     {
-        return $this->modele;
+        $this->fuel += $fuel ?? 50;
+
+        if ($this->fuel > 50) {
+            $this->fuel = 50;
+        }
+
+        return $this;
+    }
+
+    public function fillUp(): self
+    {
+        return $this->fill(50);
     }
 }
